@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# npx --no comitlint --edit "$1"
+if command -v pnpm >/dev/null 2>&1; then
+    pnpm dlx commitlint --edit "$1"
+else
+   npx --no comitlint --edit "$1
+fi
