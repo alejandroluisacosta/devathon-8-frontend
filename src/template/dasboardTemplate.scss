@@ -1,0 +1,13 @@
+.dashboard {
+  height: 100dvh;
+
+  display: grid;
+  grid-template-columns: 200px 1fr;
+
+  &__content {
+    padding: 1rem;
+  }
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
