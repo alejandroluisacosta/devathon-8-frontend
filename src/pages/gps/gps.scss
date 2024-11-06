@@ -4,6 +4,24 @@
     max-width: 100%;
     min-height: 70vh;
   }
+  &__input, &__submit {
+    position: absolute;
+    z-index: 2;
+    left: 30px;
+  }
+  &__input {
+    background-color: white;
+    &--origin {
+      top: 20px;
+    }
+    &--destination {
+      top: 50px;
+    }
+  }
+  &__submit {
+    top: 80px; 
+    background-color: #D5F2E3;
+  }
 }
 
 .map {

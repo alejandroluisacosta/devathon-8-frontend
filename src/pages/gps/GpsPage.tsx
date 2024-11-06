@@ -16,10 +16,15 @@ export const GpsPage = () => {
       zoom: 9,
     });
   }, []);
+
+  
   return (
     <div className="gps">
       <div className="gps__container">
         <div ref={mapDiv} className="map"></div>
+        <input type='text' className='gps__input gps__input--origin'/>
+        <input type='text' className='gps__input gps__input--destination'/>
+        <button type='submit' className='gps__submit'>Start</button>
       </div>
     </div>
   );
