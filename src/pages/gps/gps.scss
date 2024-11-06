@@ -4,22 +4,30 @@
     max-width: 100%;
     min-height: 70vh;
   }
-  &__input, &__submit {
+  &__search-container {
     position: absolute;
     z-index: 2;
     left: 30px;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+  }
+  &__input, &__submit {
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
   }
   &__input {
+    padding: 10px;
     background-color: white;
+    margin-bottom: 10px;
     &--origin {
-      top: 20px;
     }
     &--destination {
-      top: 50px;
     }
   }
   &__submit {
-    top: 80px; 
+    padding: 8px;
     background-color: #D5F2E3;
   }
 }
