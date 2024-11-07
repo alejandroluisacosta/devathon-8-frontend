@@ -33,12 +33,12 @@ export const GpsPage = () => {
         // Request origin coordinates
         const originResponse = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${origin.value}.json?access_token=${API_KEY}`);
         const originData = await originResponse.json();
-        const originCoordinates = originData.features[0].center;
+        const originCoordinates = originData.features.length > 0 ? originData.features[0].center : null;
     
         // Request destination coordinates
         const destinationResponse = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${destination.value}.json?access_token=${API_KEY}`);
         const destinationData = await destinationResponse.json();
-        const destinationCoordinates = destinationData.features[0].center;
+        const destinationCoordinates = destinationData.features.length > 0 ? destinationData.features[0].center : null;
     
         // Center map on new origin
         if (mapRef.current && originCoordinates) {
@@ -46,10 +46,12 @@ export const GpsPage = () => {
         }
     
         // Fetch route
-        const routeResponse = await fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${originCoordinates[0]},${originCoordinates[1]};${destinationCoordinates[0]},${destinationCoordinates[1]}?alternatives=true&geometries=geojson&language=en&overview=full&steps=true&access_token=${API_KEY}`); 
-        const routeData = await routeResponse.json();
-        const routeJson = routeData.routes[0].geometry;
-        addRouteToMap(mapRef, routeJson);
+        if (originCoordinates && destinationCoordinates) {
+          const routeResponse = await fetch(`https://api.mapbox.com/directions/v5/mapbox/driving/${originCoordinates[0]},${originCoordinates[1]};${destinationCoordinates[0]},${destinationCoordinates[1]}?alternatives=true&geometries=geojson&language=en&overview=full&steps=true&access_token=${API_KEY}`); 
+          const routeData = await routeResponse.json();
+          const routeJson = routeData.routes[0].geometry;
+          addRouteToMap(mapRef, routeJson);
+        }
 
     } catch (error) {
       console.log('Error fetching the data:', error);
