@@ -78,8 +78,8 @@ export const GpsPage = () => {
       <div className="gps__container">
         <div ref={mapDiv} className="map"></div>
         <form className='gps__search-container' onSubmit={handleSubmit}>
-          <input type='text' name="origin" className='gps__input gps__input--origin' onChange={handleAddressSuggestions}/>
-          <input type='text' name="destination" className='gps__input gps__input--destination' onChange={handleAddressSuggestions}/>
+          <input type='text' name="origin" className='gps__input gps__input--origin' onChange={handleAddressSuggestions} autoComplete='off'/>
+          <input type='text' name="destination" className='gps__input gps__input--destination' onChange={handleAddressSuggestions} autoComplete='off'/>
           <button type='submit' className='gps__submit'>Start</button>
         </form>
       </div>
