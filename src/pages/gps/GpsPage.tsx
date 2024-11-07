@@ -2,6 +2,7 @@ import { Map } from 'mapbox-gl';
 import { useLayoutEffect, useRef } from 'react';
 import './gps.scss';
 import { API_KEY } from '../../main';
+import { addRouteToMap } from '../../utils/mapUtils';
 
 export const GpsPage = () => {
   const mapDiv = useRef<HTMLDivElement>(null);
