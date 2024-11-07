@@ -4,6 +4,9 @@ import './gps.scss';
 import { API_KEY } from '../../main';
 import { addRouteToMap } from '../../utils/mapUtils';
 
+// Fake session token for map recommendations
+const SESSION_TOKEN = '123e4567-e89b-12d3-a456-426614174000';
+
 export const GpsPage = () => {
   const mapDiv = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map | null>(null);
@@ -52,13 +55,24 @@ export const GpsPage = () => {
       console.log('Error fetching the data:', error);
     }
   };
+
+  const handleAddressSuggestions = async(event: React.ChangeEvent<HTMLInputElement>) => {
+    const target = event.target as HTMLInputElement;
+    const userInput = target.value;
+    if (userInput) {
+      const suggestionsResults = await fetch(`https://api.mapbox.com/search/searchbox/v1/suggest?q=${userInput}&access_token=${API_KEY}&session_token=${SESSION_TOKEN}&proximity=-3.7038,40.4168`);
+      const suggestionsData = await suggestionsResults.json();
+      const suggestionsArray = suggestionsData.suggestions;
+      console.log(suggestionsArray);
+    }
+  };
   
   return (
     <div className="gps">
       <div className="gps__container">
         <div ref={mapDiv} className="map"></div>
         <form className='gps__search-container' onSubmit={handleSubmit}>
-          <input type='text' name="origin" className='gps__input gps__input--origin'/>
+          <input type='text' name="origin" className='gps__input gps__input--origin' onChange={handleAddressSuggestions}/>
           <input type='text' name="destination" className='gps__input gps__input--destination'/>
           <button type='submit' className='gps__submit'>Start</button>
         </form>
