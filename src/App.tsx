@@ -7,9 +7,7 @@ export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<DashboardTemplate />}>
-        <DestinationProvider>
-          <Route index element={<GpsPage />} />
-        </DestinationProvider>
+          <Route index element={<DestinationProvider><GpsPage /></DestinationProvider>} />
         <Route path="reindeers" element={<ReindeersPage />} />
         <Route path="grades" element={<GradesPage />} />
         <Route path="calories" element={<CaloriesPage />} />

@@ -17,16 +17,24 @@ export const GpsPage = () => {
     });
   }, []);
 
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const { origin, destination } = event.target as typeof event.target & {
+      origin: { value: string };
+      destination: { value: string };
+    }
+    console.log(origin, destination);
+  }
   
   return (
     <div className="gps">
       <div className="gps__container">
         <div ref={mapDiv} className="map"></div>
-        <div className='gps__search-container'>
-          <input type='text' className='gps__input gps__input--origin'/>
-          <input type='text' className='gps__input gps__input--destination'/>
+        <form className='gps__search-container' onSubmit={handleSubmit}>
+          <input type='text' name="origin" className='gps__input gps__input--origin'/>
+          <input type='text' name="destination" className='gps__input gps__input--destination'/>
           <button type='submit' className='gps__submit'>Start</button>
-        </div>
+        </form>
       </div>
     </div>
   );
