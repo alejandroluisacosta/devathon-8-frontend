@@ -56,15 +56,21 @@ export const GpsPage = () => {
     }
   };
 
+  let timeoutId: NodeJS.Timeout;
+
   const handleAddressSuggestions = async(event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target as HTMLInputElement;
     const userInput = target.value;
-    if (userInput) {
-      const suggestionsResults = await fetch(`https://api.mapbox.com/search/searchbox/v1/suggest?q=${userInput}&access_token=${API_KEY}&session_token=${SESSION_TOKEN}&proximity=-3.7038,40.4168`);
-      const suggestionsData = await suggestionsResults.json();
-      const suggestionsArray = suggestionsData.suggestions;
-      console.log(suggestionsArray);
-    }
+
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(async() => {
+      if (userInput) {
+        const suggestionsResults = await fetch(`https://api.mapbox.com/search/searchbox/v1/suggest?q=${userInput}&access_token=${API_KEY}&session_token=${SESSION_TOKEN}&proximity=-3.7038,40.4168`);
+        const suggestionsData = await suggestionsResults.json();
+        const suggestionsArray = suggestionsData.suggestions;
+        console.log(suggestionsArray);
+      }
+    }, 1000)
   };
   
   return (
