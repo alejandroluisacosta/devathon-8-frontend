@@ -17,7 +17,7 @@ export const GpsPage = () => {
     mapRef.current = new Map({
       container: mapDiv.current,
       style: 'mapbox://styles/mapbox/streets-v11',
-      center: [-74.5, 40],
+      center: [-3.7038, 40.4168],
       zoom: 9,
     });
   }, []);
@@ -64,15 +64,15 @@ export const GpsPage = () => {
     const target = event.target as HTMLInputElement;
     const userInput = target.value;
 
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(async() => {
-      if (userInput) {
-        const suggestionsResults = await fetch(`https://api.mapbox.com/search/searchbox/v1/suggest?q=${userInput}&access_token=${API_KEY}&session_token=${SESSION_TOKEN}&proximity=-3.7038,40.4168`);
-        const suggestionsData = await suggestionsResults.json();
-        const suggestionsArray = suggestionsData.suggestions;
-        console.log(suggestionsArray);
-      }
-    }, 1000)
+    // clearTimeout(timeoutId);
+    // timeoutId = setTimeout(async() => {
+    //   if (userInput) {
+    //     const suggestionsResults = await fetch(`https://api.mapbox.com/search/searchbox/v1/suggest?q=${userInput}&access_token=${API_KEY}&session_token=${SESSION_TOKEN}&proximity=-3.7038,40.4168`);
+    //     const suggestionsData = await suggestionsResults.json();
+    //     const suggestionsArray = suggestionsData.suggestions;
+    //     console.log(suggestionsArray);
+    //   }
+    // }, 1000)
   };
   
   return (
