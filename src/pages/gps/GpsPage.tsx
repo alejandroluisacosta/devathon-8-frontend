@@ -7,6 +7,12 @@ import { addRouteToMap } from '../../utils/mapUtils';
 // Fake session token for map recommendations
 const SESSION_TOKEN = '123e4567-e89b-12d3-a456-426614174000';
 
+interface ContextItem {
+  id: string;
+  text: string;
+  [key: string]: any;
+}
+
 export const GpsPage = () => {
   const mapDiv = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map | null>(null);
@@ -39,6 +45,34 @@ export const GpsPage = () => {
         const destinationResponse = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${destination.value}.json?access_token=${API_KEY}`);
         const destinationData = await destinationResponse.json();
         const destinationCoordinates = destinationData.features.length > 0 ? destinationData.features[0].center : null;
+
+        // Send destination data to backend
+        const feature = destinationData.features[0];
+        let country;
+        if (feature.context) {
+          country = feature.context.find((item: ContextItem) => item.id.includes('country'))?.text;
+        } else {
+          country = feature.place_name;
+        }
+        
+        let city;
+        if (feature.context) {
+          if (feature.context.find((item: ContextItem) => item.id.includes('place'))) {
+            city = feature.context.find((item: ContextItem) => item.id.includes('place'))?.text;
+          } else {
+            city = feature.place_name.split(',')[0];
+          }
+        } else {
+          city = undefined;
+        }
+        
+        let place;
+        if (country && city) {
+          place = feature.place_name.split(',')[0];
+        } else {
+          place = undefined;
+        }
+
     
         // Center map on new origin
         if (mapRef.current && originCoordinates) {
