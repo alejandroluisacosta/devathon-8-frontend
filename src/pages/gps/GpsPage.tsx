@@ -47,7 +47,6 @@ export const GpsPage = () => {
         const destinationCoordinates = destinationData.features.length > 0 ? destinationData.features[0].center : null;
 
         // Send destination data to backend
-        console.log(destinationData);
         const feature = destinationData.features[0];
         let country;
         if (feature.context) {
@@ -73,7 +72,6 @@ export const GpsPage = () => {
         } else {
           place = undefined;
         }
-        console.log(country, city, place);
 
     
         // Center map on new origin
