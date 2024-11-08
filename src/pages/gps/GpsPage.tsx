@@ -7,6 +7,12 @@ import { addRouteToMap } from '../../utils/mapUtils';
 // Fake session token for map recommendations
 const SESSION_TOKEN = '123e4567-e89b-12d3-a456-426614174000';
 
+interface ContextItem {
+  id: string;
+  text: string;
+  [key: string]: any;
+}
+
 export const GpsPage = () => {
   const mapDiv = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map | null>(null);
@@ -45,15 +51,15 @@ export const GpsPage = () => {
         const feature = destinationData.features[0];
         let country;
         if (feature.context) {
-          country = feature.context.find(item => item.id.includes('country'))?.text;
+          country = feature.context.find((item: ContextItem) => item.id.includes('country'))?.text;
         } else {
           country = feature.place_name;
         }
         
         let city;
         if (feature.context) {
-          if (feature.context.find(item => item.id.includes('place'))) {
-            city = feature.context.find(item => item.id.includes('place'))?.text;
+          if (feature.context.find((item: ContextItem) => item.id.includes('place'))) {
+            city = feature.context.find((item: ContextItem) => item.id.includes('place'))?.text;
           } else {
             city = feature.place_name.split(',')[0];
           }
@@ -94,15 +100,15 @@ export const GpsPage = () => {
     const target = event.target as HTMLInputElement;
     const userInput = target.value;
 
-    // clearTimeout(timeoutId);
-    // timeoutId = setTimeout(async() => {
-    //   if (userInput) {
-    //     const suggestionsResults = await fetch(`https://api.mapbox.com/search/searchbox/v1/suggest?q=${userInput}&access_token=${API_KEY}&session_token=${SESSION_TOKEN}&proximity=-3.7038,40.4168`);
-    //     const suggestionsData = await suggestionsResults.json();
-    //     const suggestionsArray = suggestionsData.suggestions;
-    //     console.log(suggestionsArray);
-    //   }
-    // }, 1000)
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(async() => {
+      if (userInput) {
+        const suggestionsResults = await fetch(`https://api.mapbox.com/search/searchbox/v1/suggest?q=${userInput}&access_token=${API_KEY}&session_token=${SESSION_TOKEN}&proximity=-3.7038,40.4168`);
+        const suggestionsData = await suggestionsResults.json();
+        const suggestionsArray = suggestionsData.suggestions;
+        console.log(suggestionsArray);
+      }
+    }, 1000)
   };
   
   return (
