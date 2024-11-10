@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import './index.scss';
 
-const API_KEY = import.meta.env.VITE_MAP_BOX_TOKEN;
+export const API_KEY = import.meta.env.VITE_MAP_BOX_TOKEN;
 
 mapboxgl.accessToken = API_KEY;
 

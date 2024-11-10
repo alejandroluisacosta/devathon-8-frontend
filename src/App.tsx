@@ -1,13 +1,14 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { CaloriesPage, ChillPage, ElvesPage, GpsPage, GradesPage, ReaderPage, ReindeersPage } from './pages';
 import { DashboardTemplate } from './template/DashboardTemplate';
+import { DestinationProvider } from './context/DestinationContext';
 import RegistryPage from './pages/registry/RegistryPage';
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<DashboardTemplate />}>
-        <Route index element={<GpsPage />} />
+          <Route index element={<DestinationProvider><GpsPage /></DestinationProvider>} />
         <Route path="reindeers" element={<ReindeersPage />} />
         <Route path="grades" element={<GradesPage />} />
         <Route path="calories" element={<CaloriesPage />} />
