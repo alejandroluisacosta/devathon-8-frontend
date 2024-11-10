@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { CaloriesPage, ChillPage, ElvesPage, GpsPage, GradesPage, ReaderPage, ReindeersPage } from './pages';
 import { DashboardTemplate } from './template/DashboardTemplate';
+import RegistryPage from './pages/registry/RegistryPage';
 
 export const App = () => {
   return (
@@ -13,6 +14,7 @@ export const App = () => {
         <Route path="elves" element={<ElvesPage />} />
         <Route path="reader" element={<ReaderPage />} />
         <Route path="chill" element={<ChillPage />} />
+        <Route path="registry" element={<RegistryPage />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
