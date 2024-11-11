@@ -11,21 +11,12 @@
     color: #333;
     background-color: var(--bg-color);
     margin-bottom: 1.5rem;
-    transition: border-color 0.3s ease;
   }
   
   &__input:focus {
     outline: none;
-    border-color: #EF233C;
-    &::placeholder {
-      color: transparent;
-    }
   }
   
-  &__input:focus + &__icon {
-    color: #EF233C;
-}
-
   &__icon {
     position: absolute;
     left: 10px;
@@ -34,7 +25,6 @@
     width: 20px;
     height: 20px;
     pointer-events: none;
-    transition: color 0.3s ease;
   }
 
   &__label {
