@@ -1,0 +1,29 @@
+.skeleton-results {
+  position: absolute;
+  top: 2.6rem;
+  left: 0;
+  // z-index: 1;
+  width: 100%;
+
+  background-color: var(--bg-color);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+
+  &__row {
+    width: 100%;
+    min-height: 4rem;
+    border-radius: 0.3rem;
+    animation: skeleton-loading 1s infinite alternate;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: rgb(153, 153, 153);
+  }
+  100% {
+    background-color: rgba(202, 202, 202, 0.63);
+  }
+}

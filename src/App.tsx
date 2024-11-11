@@ -1,13 +1,22 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { MapProvider, PlacesProvider } from './context';
 import { CaloriesPage, ChillPage, ElvesPage, GpsPage, GradesPage, ReaderPage, ReindeersPage } from './pages';
 import { DashboardTemplate } from './template/DashboardTemplate';
-import { DestinationProvider } from './context/DestinationContext';
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<DashboardTemplate />}>
-          <Route index element={<DestinationProvider><GpsPage /></DestinationProvider>} />
+        <Route
+          index
+          element={
+            <PlacesProvider>
+              <MapProvider>
+                <GpsPage />
+              </MapProvider>
+            </PlacesProvider>
+          }
+        />
         <Route path="reindeers" element={<ReindeersPage />} />
         <Route path="grades" element={<GradesPage />} />
         <Route path="calories" element={<CaloriesPage />} />
