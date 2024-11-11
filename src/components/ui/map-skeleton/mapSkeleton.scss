@@ -1,0 +1,21 @@
+.skeleton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+
+  &__map {
+    width: 100%;
+    min-height: 70vh;
+    animation: skeleton-loading 1s infinite alternate;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: rgb(153, 153, 153);
+  }
+  100% {
+    background-color: rgba(202, 202, 202, 0.63);
+  }
+}
