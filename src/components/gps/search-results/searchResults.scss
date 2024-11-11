@@ -1,0 +1,40 @@
+.search-results {
+  position: absolute;
+  z-index: 2;
+  background-color: #fff;
+  top: 2.5rem;
+  left: 0;
+  width: 100%;
+  border-bottom-left-radius: 0.3rem;
+  border-bottom-right-radius: 0.3rem;
+  padding: 0.5rem;
+  overflow: hidden;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+  &__li {
+    padding: 0.5rem;
+    list-style: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f9f9f9;
+    }
+    &--active {
+      background-color: #d6d4d4;
+    }
+  }
+  &__title {
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+
+  &__buton {
+    background-color: #222;
+    color: #fff;
+    padding: 0.3rem 1rem;
+    border-radius: 0.3rem;
+  }
+}
