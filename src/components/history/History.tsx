@@ -1,6 +1,6 @@
 import { Map } from 'mapbox-gl';
 import { useLayoutEffect, useRef, useState } from 'react';
-import './RegistrySearches.scss';
+import './History.scss';
 import Search from '../search/Search';
 
 export interface IntAttributtes {

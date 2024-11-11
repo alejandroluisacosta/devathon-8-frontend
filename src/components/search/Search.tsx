@@ -1,6 +1,6 @@
 import { IoHome, IoLocationOutline } from 'react-icons/io5';
 import './Search.scss';
-import { IntSearch } from '../registrySearches/RegistrySearches';
+import { IntSearch } from '../history/History';
 
 interface SearchProps {
   search: IntSearch;
