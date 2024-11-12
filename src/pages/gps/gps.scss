@@ -1,4 +1,7 @@
 .gps {
+  &__title {
+    font-family: 'Great Vibes', sans-serif;
+  }
   &__container {
     position: relative;
     max-width: 100%;
@@ -21,10 +24,6 @@
     padding: 10px;
     background-color: white;
     margin-bottom: 10px;
-    &--origin {
-    }
-    &--destination {
-    }
   }
   &__submit {
     padding: 8px;
