@@ -4,9 +4,21 @@
   --secondary-color: ;
   --text-color: #222;
   --bg-color: #fffcf9;
+  --light-green: #D5F2E3;
+  --green: #73BA9B;
+  --dark-green: #003E1F;
+  --light-red: #EF233C;
+  --dark-red: #D90429;
 
   /* Tipografía */
   --tipo-principal: Helvetica, Arial, sans-serif;
+  
+  @font-face {
+    font-family: 'Great Vibes';
+    src: url('/fonts/GreatVibes-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
 }
 
 *,
