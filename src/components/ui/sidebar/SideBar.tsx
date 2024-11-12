@@ -5,7 +5,7 @@ import './sideBar.scss';
 export const SideBar = () => {
   return (
     <aside className="aside">
-      <img src='/images/santa-claus.png' className="aside__logo" />
+      <img src='/images/santa-claus.webp' className="aside__logo" />
       <nav className="side-bar">
         <ul className="side-bar__links">
           {SIDE_BAR.map((link) => (
