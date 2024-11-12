@@ -3,6 +3,15 @@
     font-family: 'Great Vibes', sans-serif;
     font-size: 3rem;
     margin-bottom: 0.5rem;
+    color: var(--light-red);
+  }
+  &__subtitle {
+    display: inline-block;
+    padding: 0.5rem;
+    background-color: var(--dark-red);
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
   }
   &__container {
     position: relative;
