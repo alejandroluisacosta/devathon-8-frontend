@@ -47,9 +47,10 @@ export const SearchResults = () => {
             >
               <h2 className="search-results__title">{place.properties.full_address}</h2>
 
-              <button className="search-results__buton" onClick={() => getRoute(place)}>
-                Direcctiones
+              <button className="search-results__button" onClick={() => getRoute(place)}>
+                Directions
               </button>
+              <img src='images/bauble.png' className='search-results__bauble'/>
             </li>
           ))}
         </ul>

@@ -10,13 +10,13 @@
     font-size: 16px;
     color: #333;
     background-color: var(--bg-color);
+    margin-bottom: 1.5rem;
   }
-
+  
   &__input:focus {
     outline: none;
-    border-color: #222;
   }
-
+  
   &__icon {
     position: absolute;
     left: 10px;

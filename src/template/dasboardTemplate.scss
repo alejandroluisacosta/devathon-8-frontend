@@ -5,7 +5,9 @@
   grid-template-columns: 200px 1fr;
 
   &__content {
-    padding: 1rem;
+    padding: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;

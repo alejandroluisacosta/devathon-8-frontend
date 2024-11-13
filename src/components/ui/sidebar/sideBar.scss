@@ -1,18 +1,23 @@
 .aside {
-  background-color: aliceblue;
+  background-color: var(--light-green);
   height: 100%;
   width: 100%;
   padding: 1rem;
+  padding-top: 3rem;
   display: flex;
   flex-direction: column;
-  row-gap: 5rem;
+  row-gap: 2rem;
   @media screen and (max-width: 768px) {
     position: fixed;
     bottom: 0;
     height: auto;
     height: auto;
+    padding: 1rem;
   }
   &__logo {
+    width: 50px;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
     @media screen and (max-width: 768px) {
       display: none;
     }
@@ -47,6 +52,6 @@
 }
 
 .active {
-  background-color: #222;
+  background-color: #003E1F;
   color: #fff;
 }
