@@ -3,3 +3,6 @@ export { PlacesProvider } from './places/PlacesProvider';
 
 export { MapContext } from './map/MapContext';
 export { MapProvider } from './map/MapProvider';
+
+export { HistoryContext } from './history/HistoryContext';
+export { HistoryProvider } from './history/HistoryProvider';

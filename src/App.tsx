@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { MapProvider, PlacesProvider } from './context';
+import { HistoryProvider, MapProvider, PlacesProvider } from './context';
 import { CaloriesPage, ChillPage, ElvesPage, GpsPage, GradesPage, ReaderPage, ReindeersPage } from './pages';
 import { DashboardTemplate } from './template/DashboardTemplate';
 
@@ -12,7 +12,9 @@ export const App = () => {
           element={
             <PlacesProvider>
               <MapProvider>
-                <GpsPage />
+                <HistoryProvider>
+                  <GpsPage />
+                </HistoryProvider>
               </MapProvider>
             </PlacesProvider>
           }
