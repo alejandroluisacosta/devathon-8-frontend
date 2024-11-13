@@ -1,19 +1,8 @@
 import { useLayoutEffect, useState } from 'react';
 import './History.scss';
 import SearchSave from '../search-save/SearchSave';
+import { IntSearch } from '../../interfaces/history.interface';
 
-export interface IntAttributtes {
-  place: string;
-  city: string;
-  country: string;
-  coordinates: [number, number];
-}
-
-export interface IntSearch {
-  type: string;
-  id: number;
-  attributes: IntAttributtes;
-}
 
 const History = () => {
   const [searchHistory, setSearchHistory] = useState<IntSearch[] | null>(null);
