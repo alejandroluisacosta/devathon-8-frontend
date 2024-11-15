@@ -13,6 +13,11 @@ export const historyReducer = (state: HistoryState, action: HistoryAction): Hist
         isLoading: false,
         history: action.payload,
       };
+    case 'UPDATE_HISTORY':
+      return {
+        ...state,
+        history: [action.payload, ...state.history],
+      };
 
     default:
       return state;

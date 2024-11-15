@@ -10,3 +10,17 @@ export interface IntSearch {
   id: number;
   attributes: IntAttributtes;
 }
+
+export interface HistorySaveResponse {
+  message: string;
+  address: {
+    place: string;
+    city: string;
+    country: string;
+    longitude: number;
+    latitude: number;
+    updated_at: string;
+    created_at: string;
+    id: number;
+  };
+}
