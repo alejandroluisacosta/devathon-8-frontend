@@ -1,10 +1,10 @@
+import { Marker } from 'mapbox-gl';
 import { useLayoutEffect, useState } from 'react';
-import './History.scss';
-import SearchSave from '../search-save/SearchSave';
+import { useMap, usePlaces } from '../../hook';
 import { useHistory } from '../../hook/useHistory';
 import { IntSearch } from '../../interfaces/history.interface';
-import { useMap, usePlaces } from '../../hook';
-import { Marker } from 'mapbox-gl';
+import SearchSave from '../search-save/SearchSave';
+import './History.scss';
 
 const History = () => {
   const { history, setHistory } = useHistory();
@@ -37,8 +37,6 @@ const History = () => {
 
   const handleClick = (place: IntSearch) => {
     const [lng, lat] = place.attributes.coordinates;
-
-    console.log('New Search');
 
     // remove last mark clicked
     if (activeMarker) activeMarker.remove();
