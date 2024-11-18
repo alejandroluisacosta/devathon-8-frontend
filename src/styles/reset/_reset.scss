@@ -16,7 +16,7 @@
 :root {
   /* Colores */
   --text-color: #222;
-  --text-wite: #fff;
+  --light-text: #fff;
   --bg-color: #fffcf9;
   --light-green: #d5f2e3;
   --green: #73ba9b;
@@ -28,7 +28,7 @@
   --box-shadow: 4px 5px 0px 0px var(--text-color);
 
   /* Tipografía */
-  --tipo-principal: 'Geist', Helvetica, Arial, sans-serif;
+  --primary-font: 'Geist', Helvetica, Arial, sans-serif;
 
   @font-face {
     font-family: 'Great Vibes';
@@ -154,7 +154,7 @@ svg {
 body {
   min-height: 100vh;
   font-size: 100%;
-  font-family: var(--tipo-principal);
+  font-family: var(--primary-font);
   color: var(--text-color);
   /* (Opcional) */
   hyphens: auto;
