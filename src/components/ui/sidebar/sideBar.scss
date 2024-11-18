@@ -58,7 +58,7 @@
       background-color: var(--dark-red);
       border: 0.125rem solid var(--text-color);
       box-shadow: 5px 4px 0px 0px var(--text-color);
-      color: var(--text-wite);
+      color: var(--light-text);
     }
   }
   &__title {
@@ -70,7 +70,7 @@
 
 .active {
   background-color: var(--dark-red);
-  color: var(--text-wite);
+  color: var(--light-text);
   box-shadow: var(--box-shadow);
   border: 0.125rem solid var(--text-color);
 }
