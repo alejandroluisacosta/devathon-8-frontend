@@ -4,7 +4,15 @@
   min-width: 100%;
   gap: 1rem;
   padding: 1rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border: 0.125rem solid var(--border-color);
+  border-radius: 0.3rem;
+  transition: box-shadow 0.3s ease;
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--light-green);
+  }
 
   &__title {
     display: flex;
@@ -20,5 +28,8 @@
     display: flex;
     gap: 1rem;
   }
-
+  &__icon {
+    width: 2rem;
+    color: var(--dark-green);
+  }
 }

@@ -1,18 +1,35 @@
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Light.woff') format('woff');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-Regular.woff') format('woff');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Geist';
+  src: url('/fonts/Geist-SemiBold.woff') format('woff');
+  font-weight: 600;
+}
 :root {
   /* Colores */
-  --primary-color: ;
-  --secondary-color: ;
   --text-color: #222;
+  --light-text: #fff;
   --bg-color: #fffcf9;
-  --light-green: #D5F2E3;
-  --green: #73BA9B;
-  --dark-green: #003E1F;
-  --light-red: #EF233C;
-  --dark-red: #D90429;
+  --light-green: #d5f2e3;
+  --green: #73ba9b;
+  --dark-green: #003e1f;
+  --light-red: #ef233c;
+  --dark-red: #d90429;
+  --border-color: #000;
+
+  --box-shadow: 4px 5px 0px 0px var(--text-color);
 
   /* Tipografía */
-  --tipo-principal: Helvetica, Arial, sans-serif;
-  
+  --primary-font: 'Geist', Helvetica, Arial, sans-serif;
+
   @font-face {
     font-family: 'Great Vibes';
     src: url('/fonts/GreatVibes-Regular.ttf') format('truetype');
@@ -137,7 +154,7 @@ svg {
 body {
   min-height: 100vh;
   font-size: 100%;
-  font-family: var(--tipo-principal);
+  font-family: var(--primary-font);
   color: var(--text-color);
   /* (Opcional) */
   hyphens: auto;

@@ -1,18 +1,25 @@
 .aside {
-  background-color: var(--light-green);
   height: 100%;
   width: 100%;
+
   padding: 1rem;
   padding-top: 3rem;
+  background-color: #73ba9b;
+  border-right: 0.125rem solid var(--border-color);
+
   display: flex;
   flex-direction: column;
   row-gap: 2rem;
   @media screen and (max-width: 768px) {
+    max-width: 100%;
     position: fixed;
     bottom: 0;
     height: auto;
     height: auto;
     padding: 1rem;
+    border-right: 0;
+    border-top: 0.125rem solid var(--border-color);
+    z-index: 2;
   }
   &__logo {
     width: 50px;
@@ -37,12 +44,22 @@
   &__link {
     padding: 0.6rem 1rem;
     border-radius: 0.3rem;
+    border: 0.125rem solid transparent;
+    font-weight: 500;
+
     display: flex;
     align-items: center;
     gap: 0.5rem;
     transition:
       background-color 0.3s ease,
-      color 0.3s ease;
+      color 0.2s ease;
+
+    &:hover {
+      background-color: var(--dark-red);
+      border: 0.125rem solid var(--text-color);
+      box-shadow: 5px 4px 0px 0px var(--text-color);
+      color: var(--light-text);
+    }
   }
   &__title {
     @media screen and (max-width: 768px) {
@@ -52,6 +69,8 @@
 }
 
 .active {
-  background-color: #003E1F;
-  color: #fff;
+  background-color: var(--dark-red);
+  color: var(--light-text);
+  box-shadow: var(--box-shadow);
+  border: 0.125rem solid var(--text-color);
 }

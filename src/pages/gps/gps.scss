@@ -1,44 +1,28 @@
 .gps {
+  &__header {
+    display: flex;
+    gap: 1rem;
+  }
   &__title {
     font-family: 'Great Vibes', sans-serif;
     font-size: 3rem;
     margin-bottom: 0.5rem;
-    color: var(--dark-red);
+    color: var(--light-red);
   }
   &__subtitle {
     display: inline-block;
     padding: 0.5rem;
-    background-color: var(--dark-red);
+    background-color: var(--light-red);
     color: white;
     border-radius: 5px;
     margin-bottom: 1.5rem;
   }
   &__container {
+    width: 100%;
     position: relative;
-    max-width: 100%;
     min-height: 70vh;
-  }
-  &__search-container {
-    position: absolute;
-    z-index: 2;
-    left: 30px;
-    top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 5%;
-  }
-  &__input, &__submit {
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
-  }
-  &__input {
-    padding: 10px;
-    background-color: white;
-    margin-bottom: 10px;
-  }
-  &__submit {
-    padding: 8px;
-    background-color: #D5F2E3;
+    margin-bottom: 1rem;
+    border: 0.125rem solid var(--border-color);
   }
 }
 

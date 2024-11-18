@@ -5,10 +5,11 @@ import './gps.scss';
 export const GpsPage = () => {
   return (
     <div className="gps">
-      <h1 className='gps__title'>Christmas Map</h1>
-      <p className='gps__subtitle'>'Cause getting lost on Christmas Eve wouldn't make Santa happy!</p>
-      <SearchBar />
+      <header className="gps__header">
+        <h1 className="gps__title">Christmas Map</h1>
+      </header>
       <div className="gps__container">
+        <SearchBar />
         <MapPreview />
       </div>
       <History />
