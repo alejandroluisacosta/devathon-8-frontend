@@ -3,6 +3,7 @@ import { useLayoutEffect, useRef } from 'react';
 import { useMap } from '../../../hook/useMap';
 import { usePlaces } from '../../../hook/usePlaces';
 import { MapSkeleton } from '../../ui/map-skeleton/MapSkeleton';
+import './MapPreview.scss'
 
 export const MapPreview = () => {
   const { isLoading, userLocation } = usePlaces();
