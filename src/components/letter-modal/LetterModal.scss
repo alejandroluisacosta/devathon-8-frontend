@@ -1,0 +1,76 @@
+.btn {
+  font-family: var(--primary-font);
+  padding: 0.6rem 1rem;
+  border-radius: 0.3rem;
+  border: 0.125rem solid var(--text-color);
+  font-weight: 600;
+  background-color: var(--dark-red);
+  box-shadow: 5px 4px 0px 0px var(--text-color);
+  color: var(--light-text);
+
+  &:hover {
+    background-color: var(--dark-red);
+    border: 0.125rem solid var(--text-color);
+    box-shadow: 5px 4px 0px 0px var(--text-color);
+    color: var(--light-text);
+  }
+
+  &-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+.letter {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-3deg);
+
+  padding: 2rem 2rem;
+  border-radius: 0.3rem;
+  border: 0.125rem solid var(--text-color);
+  box-shadow: 5px 4px 0px 0px var(--text-color);
+
+  font-family: var(--primary-font);
+  line-height: 1.5;
+  max-width: 65ch;
+  min-width: 300px;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 0.5rem;
+    color: var(--dark-red);
+  }
+
+  &__date {
+    font-weight: 600;
+    color: var(--dark-red);
+    text-align: right;
+  }
+
+  &__stamp {
+    position: absolute;
+    bottom: 10%;
+    left: 20%;
+
+    border: solid 0.1rem var(--dark-red);
+    border-radius: 0.1rem;
+    color: var(--dark-red);
+    font-size: .5rem;
+    font-weight: bold;
+    line-height: 1;
+    padding: 0.1rem 0.5rem;
+    transform-origin: 50% 50%;
+    transform: rotate(-12deg) scale(5);
+    transition: all 0.3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+  }
+
+  & > * {
+    margin-block: 1rem;
+  }
+}
