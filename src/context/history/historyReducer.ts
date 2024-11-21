@@ -16,7 +16,7 @@ export const historyReducer = (state: HistoryState, action: HistoryAction): Hist
     case 'UPDATE_HISTORY':
       return {
         ...state,
-        history: [action.payload, ...state.history],
+        history: [action.payload, ...state.history].slice(0, 5),
       };
 
     default:
