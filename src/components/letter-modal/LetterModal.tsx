@@ -41,7 +41,7 @@ const LetterModal = ({ letter: { content, date, image, read, sender, subject } }
           <IoClose />
         </button>
 
-        {read && <div className="letter__stamp">READ IT</div>}
+        {read && <div className="letter__stamp">READ</div>}
       </dialog>
     </>
   );

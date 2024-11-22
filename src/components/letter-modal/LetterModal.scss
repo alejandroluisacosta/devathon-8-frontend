@@ -55,18 +55,18 @@
 
   &__stamp {
     position: absolute;
-    bottom: 10%;
+    bottom: 20%;
     left: 20%;
 
     border: solid 0.1rem var(--dark-red);
     border-radius: 0.1rem;
     color: var(--dark-red);
-    font-size: .5rem;
+    font-size: 0.5rem;
     font-weight: bold;
     line-height: 1;
     padding: 0.1rem 0.5rem;
     transform-origin: 50% 50%;
-    transform: rotate(-12deg) scale(5);
+    transform: rotate(-20deg) scale(5);
     transition: all 0.3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
   }
 
