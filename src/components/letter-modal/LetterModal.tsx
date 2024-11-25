@@ -13,11 +13,11 @@ const LetterModal = ({ letter: { attributes, id }, markAsRead }: LetterProps) =>
 
   const showLetter = () => {
     modalLetter.current?.showModal();
-    markAsRead(id);
   };
 
   const hideLetter = () => {
     modalLetter.current?.close();
+    markAsRead(id);
   };
 
   const formatDate = new Date(attributes.created_at).toLocaleDateString();
