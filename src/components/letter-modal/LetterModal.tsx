@@ -43,7 +43,7 @@ const LetterModal = ({ letter: { attributes, id }, markAsRead }: LetterProps) =>
           <IoClose />
         </button>
 
-        {attributes.read && <div className="letter__stamp">READ IT</div>}
+        {attributes.read && <div className="letter__stamp">READ</div>}
       </dialog>
     </>
   );
