@@ -1,5 +1,5 @@
 import { Marker } from 'mapbox-gl';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useMap, usePlaces } from '../../../hook';
 import { useHistory } from '../../../hook/useHistory';
 import { IntSearch } from '../../../interfaces/history.interface';
@@ -46,6 +46,22 @@ export const SearchResults = () => {
     };
     updateHistory(historyToSave);
   };
+
+  // Remove suggestions when user selects a route
+  useEffect(() => {
+    const dropdownItems = document.querySelectorAll('.search-results__button');
+    
+    const handleSelection = () => {
+      const dropdown: HTMLInputElement | null = document.querySelector('.search-results');
+      if (dropdown) dropdown.style.display = 'none'
+    };
+  
+    dropdownItems.forEach(item => item.addEventListener('click', handleSelection));
+  
+    return () => {
+      dropdownItems.forEach(item => item.removeEventListener('click', handleSelection));
+    };
+  }, [places]);
 
   if (!places.length) return <></>;
 
