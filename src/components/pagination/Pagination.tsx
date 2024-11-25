@@ -19,7 +19,7 @@ export const Pagination = ({ page, lastPage, setPage }: Props) => {
           setPage(page - 1);
           navigate(`?page=${page - 1}`);
         }}
-        aria-label="button previus page "
+        aria-label="button previous page"
       >
         <IoChevronBackOutline />
       </button>
