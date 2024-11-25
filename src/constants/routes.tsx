@@ -1,5 +1,5 @@
 import { IoMdSnow } from 'react-icons/io';
-import { IoAddCircleOutline, IoLocationOutline, IoPeopleOutline, IoStatsChartOutline } from 'react-icons/io5';
+import { IoAddCircleOutline, IoBookOutline, IoLocationOutline, IoStatsChartOutline } from 'react-icons/io5';
 
 interface SideBar {
   title: string;
@@ -28,16 +28,16 @@ export const SIDE_BAR: SideBar[] = [
     path: '/calories',
     icon: <IoStatsChartOutline />,
   },
-  {
-    title: 'Elves',
-    path: '/elves',
-    icon: <IoPeopleOutline />,
-  },
   // {
-  //   title: 'Reader',
-  //   path: '/reader',
-  //   icon: <IoBookOutline />,
+  //   title: 'Elves',
+  //   path: '/elves',
+  //   icon: <IoPeopleOutline />,
   // },
+  {
+    title: 'Reader',
+    path: '/reader',
+    icon: <IoBookOutline />,
+  },
   // {
   //   title: 'Chill Zone',
   //   path: '/chill',
