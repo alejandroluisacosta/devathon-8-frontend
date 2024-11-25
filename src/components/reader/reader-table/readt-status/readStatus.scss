@@ -1,0 +1,14 @@
+.letter-status {
+  padding: 0.2rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  border: 0.0625rem solid var(--border-color);
+}
+
+.read {
+  background-color: var(--border-color);
+  color: var(--light-text);
+}
+.unread {
+  background-color: #f4f4f5;
+}
