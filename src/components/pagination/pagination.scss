@@ -1,0 +1,18 @@
+.pagination {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  &__prev,
+  &__next {
+    padding: 0.4rem;
+    background-color: var(--bg-color);
+    border: 0.0625rem solid var(--text-color);
+    border-radius: 100%;
+    box-shadow: var(--box-shadow-small);
+  }
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
