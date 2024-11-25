@@ -50,16 +50,24 @@ export const SearchResults = () => {
   // Remove suggestions when user selects a route
   useEffect(() => {
     const dropdownItems = document.querySelectorAll('.search-results__button');
+    const dropdown: HTMLInputElement | null = document.querySelector('.search-results');
     
     const handleSelection = () => {
-      const dropdown: HTMLInputElement | null = document.querySelector('.search-results');
       if (dropdown) dropdown.style.display = 'none'
+    };
+
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (dropdown && !dropdown.contains(event.target as Node)) {
+        dropdown.style.display = 'none';
+      }
     };
   
     dropdownItems.forEach(item => item.addEventListener('click', handleSelection));
+    document.addEventListener('mousedown', handleOutsideClick);
   
     return () => {
       dropdownItems.forEach(item => item.removeEventListener('click', handleSelection));
+      document.removeEventListener('mousedown', handleOutsideClick);
     };
   }, [places]);
 
