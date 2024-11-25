@@ -1,0 +1,8 @@
+.reader {
+  padding-bottom: 5rem;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+}
