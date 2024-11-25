@@ -1,0 +1,26 @@
+.table-skeleton {
+  width: 100%;
+  border-radius: 0.3rem;
+  border: 0.125rem solid var(--text-color);
+  box-shadow: var(--box-shadow);
+  &__header {
+    padding: 1.2rem;
+    background-color: var(--bg-color);
+    animation: skeleton-loading 1s infinite alternate;
+  }
+  &__row {
+    padding: 1.5rem;
+    background-color: var(--bg-color);
+    border-top: 0.0625rem solid var(--text-color);
+    animation: skeleton-loading 1s infinite alternate;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--bg-color);
+  }
+  100% {
+    background-color: #dbdbdb;
+  }
+}
