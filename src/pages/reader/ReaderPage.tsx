@@ -5,6 +5,7 @@ import { ReaderTable } from '../../components/reader/reader-table/ReaderTable';
 import { useLettersFetch } from '../../hook';
 import { parseQuery } from '../../utils';
 import './readerPage.scss';
+import { SearchBar } from '../../components/reader/SearchBar/SearchBar';
 
 export const ReaderPage = () => {
   const location = useLocation();
@@ -20,6 +21,8 @@ export const ReaderPage = () => {
           <LettersSkeleton rows={20} />
         ) : (
           <>
+            <SearchBar />
+
             <ReaderTable initalLetters={letters} />
 
             <Pagination page={page} lastPage={lastPage} setPage={setPage} />
