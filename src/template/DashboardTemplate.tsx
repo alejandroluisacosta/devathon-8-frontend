@@ -7,7 +7,7 @@ export const DashboardTemplate = () => {
     <div className="dashboard">
       <SideBar />
 
-      <div className="dashboard__content">
+      <div className="dashboard__content section">
         <Outlet />
       </div>
     </div>
