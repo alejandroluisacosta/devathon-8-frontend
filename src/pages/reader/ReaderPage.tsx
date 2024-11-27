@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 import { LettersSkeleton, Pagination } from '../../components';
 import { ReaderTable } from '../../components/reader/reader-table/ReaderTable';
@@ -11,8 +11,15 @@ export const ReaderPage = () => {
   const location = useLocation();
   const parsed = parseQuery(location.search);
   const [page, setPage] = useState(+parsed.page || 1);
+  const [query, setQuery] = useState('');
 
-  const { loading, letters, error, lastPage } = useLettersFetch(page.toString());
+  
+  const { loading, letters, error, lastPage } = useLettersFetch(page.toString(), query);
+  
+  const handleSearchSubmit = useCallback((newQuery: string) => {
+    setQuery(newQuery.toLowerCase());
+  }, []);
+  
 
   return (
     <section className="reader">
@@ -21,7 +28,7 @@ export const ReaderPage = () => {
           <LettersSkeleton rows={20} />
         ) : (
           <>
-            <SearchBar />
+            <SearchBar onSubmit={handleSearchSubmit}/>
 
             <ReaderTable initalLetters={letters} />
 

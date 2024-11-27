@@ -8,7 +8,7 @@ interface LetterState {
   lastPage: number;
 }
 
-export const useLettersFetch = (page: string) => {
+export const useLettersFetch = (page: string, query: string = '') => {
   const [lettersState, setLettersState] = useState<LetterState>({
     letters: [],
     loading: false,
@@ -34,7 +34,11 @@ export const useLettersFetch = (page: string) => {
           },
         };
 
-        const response = await fetch(`${API_URL}/letters?page=${page}`, options);
+        const response = await fetch(
+          `${API_URL}/letters?page=${page}${query ? `&search=${query}` : ''}`,
+          options
+        );
+        console.log('hey');
 
         if (!response.ok) throw new Error('Network response was not ok');
 
@@ -53,7 +57,7 @@ export const useLettersFetch = (page: string) => {
     };
 
     getLetters();
-  }, [page]);
+  }, [page, query]);
 
   return { ...lettersState };
 };
