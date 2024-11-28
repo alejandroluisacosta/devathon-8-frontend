@@ -1,0 +1,27 @@
+.skeleton {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 1rem;
+
+  @media screen and (max-width: 48rem) {
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  }
+
+  &__history {
+    padding: 3rem 6rem;
+    animation: skeleton-loading 1s infinite alternate;
+    border-radius: 0.3125rem;
+    box-shadow: 5px 4px 0px 0px var(--text-color);
+    overflow: hidden;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: rgb(153, 153, 153);
+  }
+  100% {
+    background-color: rgba(202, 202, 202, 0.63);
+  }
+}
