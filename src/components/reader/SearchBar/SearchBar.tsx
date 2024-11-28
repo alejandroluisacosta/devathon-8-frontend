@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 interface SearchBarProps {
-    onSubmit: (event: React.FormEvent) => void;
+  onSubmit: (value: string) => void;
 }
 
 export const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault(); // Prevent the default form submission behavior
+    event.preventDefault();
     onSubmit(inputValue);
   };
 

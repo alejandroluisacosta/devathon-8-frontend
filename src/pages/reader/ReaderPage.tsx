@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { LettersSkeleton, Pagination } from '../../components';
 import { ReaderTable } from '../../components/reader/reader-table/ReaderTable';
@@ -16,9 +16,9 @@ export const ReaderPage = () => {
   
   const { loading, letters, error, lastPage } = useLettersFetch(page.toString(), query);
   
-  const handleSearchSubmit = useCallback((newQuery: string) => {
+  const handleSearchSubmit = (newQuery: string) => {
     setQuery(newQuery.toLowerCase());
-  }, []);
+  };
   
 
   return (
