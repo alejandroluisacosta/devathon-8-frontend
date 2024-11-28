@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { LetterR } from '../../../interfaces/lettersResponse.interface';
 import LetterModal from '../../letter-modal/LetterModal';
 import './readerTable.scss';
@@ -16,6 +16,11 @@ export const ReaderTable = ({ initalLetters }: Props) => {
     );
     setLetters(lettersUpdated);
   };
+
+  useEffect(() => {
+    setLetters(initalLetters);
+  }, [initalLetters]);
+
   return (
     <div className="table-container">
       <table className="table">
