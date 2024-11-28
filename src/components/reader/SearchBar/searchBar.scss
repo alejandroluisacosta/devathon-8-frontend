@@ -1,0 +1,25 @@
+.reader {
+    &__search {
+        display: flex;
+        gap: 20px;
+        &__input {
+            border: 1px solid black;
+            border-radius: 0.4rem;
+            box-shadow: 3px 4px 0px 0px var(--text-color);
+            padding: 2px 10px;
+            &:focus {
+                outline: none;
+            }
+        }
+        &__submit {
+            background-color: var(--light-green);
+            padding: 5px 20px;
+            border-radius: 0.4rem;
+            box-shadow: 3px 4px 0px 0px var(--text-color);
+            &:active {
+                transform: scale(0.95);
+                transition: transform 0.1s;
+            }
+        }
+    }
+}
