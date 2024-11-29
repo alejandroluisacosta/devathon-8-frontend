@@ -25,15 +25,14 @@ export const ReaderPage = () => {
   return (
     <section className="reader">
       <div className="reader__content">
+        <div className='reader__top-section'>
+          <SearchBar onSubmit={handleSearchSubmit}/>
+          <FilterLetters />
+        </div>
         {loading ? (
           <LettersSkeleton rows={20} />
         ) : (
           <>
-            <div className='reader__top-section'>
-              <SearchBar onSubmit={handleSearchSubmit}/>
-              <FilterLetters />
-            </div>
-
             <ReaderTable initalLetters={letters} />
 
             <Pagination page={page} lastPage={lastPage} setPage={setPage} />
