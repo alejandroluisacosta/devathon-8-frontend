@@ -6,6 +6,7 @@ import { useLettersFetch } from '../../hook';
 import { parseQuery } from '../../utils';
 import './readerPage.scss';
 import { SearchBar } from '../../components/reader/SearchBar/SearchBar';
+import { FilterLetters } from '../../components/reader/FilterLetters/FilterLetters';
 
 export const ReaderPage = () => {
   const location = useLocation();
@@ -28,7 +29,10 @@ export const ReaderPage = () => {
           <LettersSkeleton rows={20} />
         ) : (
           <>
-            <SearchBar onSubmit={handleSearchSubmit}/>
+            <div className='reader__top-section'>
+              <SearchBar onSubmit={handleSearchSubmit}/>
+              <FilterLetters />
+            </div>
 
             <ReaderTable initalLetters={letters} />
 
