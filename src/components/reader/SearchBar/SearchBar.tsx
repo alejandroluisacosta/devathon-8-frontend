@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import { useRef } from 'react';
 import './searchBar.scss';
 
 interface SearchBarProps {
-  onSubmit: (value: string) => void;
+  onChange: (value: string) => void;
 }
 
-export const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
-  const [inputValue, setInputValue] = useState('');
+export const SearchBar: React.FC<SearchBarProps> = ({ onChange }) => {
+  const debounceRef = useRef<ReturnType<typeof setTimeout>>();
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    onSubmit(inputValue);
+  const onQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+    }
+
+    debounceRef.current = setTimeout(() => {
+      onChange(e.target.value);
+    }, 500);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="reader__search">
-      <input 
-        type="text" 
-        className="reader__search__input" 
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)} 
-      />
-      <button type="submit" className="reader__search__submit">Search</button>
-    </form>
+    <input 
+      type="text" 
+      className="reader__search" 
+      onChange={onQueryChange}
+    />
   );
 };

@@ -16,7 +16,7 @@ export const ReaderPage = () => {
   
   const { loading, letters, error, lastPage } = useLettersFetch(page.toString(), query);
   
-  const handleSearchSubmit = (newQuery: string) => {
+  const handleSearchChange = (newQuery: string) => {
     setQuery(newQuery.toLowerCase());
   };
   
@@ -24,12 +24,13 @@ export const ReaderPage = () => {
   return (
     <section className="reader">
       <div className="reader__content">
+        <div className='reader__top-section'>
+          <SearchBar onChange={handleSearchChange}/>
+        </div>
         {loading ? (
           <LettersSkeleton rows={20} />
         ) : (
           <>
-            <SearchBar onSubmit={handleSearchSubmit}/>
-
             <ReaderTable initalLetters={letters} />
 
             <Pagination page={page} lastPage={lastPage} setPage={setPage} />
