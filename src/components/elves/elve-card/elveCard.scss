@@ -1,0 +1,85 @@
+.elve {
+  outline: 0.1875rem solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  &__hero {
+    background-color: var(--light-green);
+    border-bottom: 0.1875rem solid var(--border-color);
+  }
+  &__avatar {
+    position: relative;
+    bottom: -3.5rem;
+    width: 7rem;
+    height: 7rem;
+    border-radius: 100%;
+    outline: 0.1875rem solid var(--border-color);
+
+    margin-inline: auto;
+  }
+  &__container {
+    padding: 5rem 1rem 1rem 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  &__name {
+    font-weight: 600;
+    font-size: clamp(1.3rem, 3.5vw, 1.75rem);
+    text-align: center;
+  }
+  &__email {
+    text-align: center;
+  }
+  &__info {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  &__content {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__data {
+    font-size: 0.875em;
+  }
+  &__number {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 600;
+  }
+  &__actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  &__btn {
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    outline: 0.125rem solid var(--border-color);
+    box-shadow: var(--box-shadow);
+    flex-basis: 5rem;
+    flex-grow: 1;
+
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    justify-content: center;
+
+    &--edit {
+      background-color: var(--green);
+    }
+    &--delete {
+      background-color: var(--dark-red);
+      color: var(--light-text);
+    }
+  }
+  &__icon {
+    font-size: 1.3rem;
+  }
+}
