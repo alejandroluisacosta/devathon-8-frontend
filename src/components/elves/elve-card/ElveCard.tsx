@@ -6,7 +6,7 @@ type Props = {
   elve: Elve;
 };
 
-export const ElveCart = ({ elve }: Props) => {
+export const ElveCarD = ({ elve }: Props) => {
   return (
     <article className="elve">
       <div className="elve__hero">

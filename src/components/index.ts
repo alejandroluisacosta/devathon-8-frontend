@@ -1,3 +1,4 @@
+export * from './elves/elve-card/ElveCard';
 export * from './elves/elve-list/ElveList';
 export * from './gps/grinch-marker/GrinchMarker';
 export * from './gps/map-preview/MapPreview';
