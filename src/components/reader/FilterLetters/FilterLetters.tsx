@@ -1,11 +1,11 @@
 import './filterLetters.scss';
 
-export const FilterLetters = () => {
+export const FilterLetters: React.FC<{ onClick: (status: string) => void }> = ({ onClick }) => {
     return (
         <div className="reader__filter">
-            <button className="reader__filter__button">All</button>
-            <button className="reader__filter__button">Read</button>
-            <button className="reader__filter__button">Unread</button>
+            <button className="reader__filter__button" onClick={() => onClick('')}>All</button>
+            <button className="reader__filter__button" onClick={() => onClick('read')}>Read</button>
+            <button className="reader__filter__button" onClick={() => onClick('unread')}>Unread</button>
         </div>
     )
 }
