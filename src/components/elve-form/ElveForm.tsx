@@ -6,6 +6,7 @@ import { Elve as ElveInterface } from '../../interfaces/elvesResponse.interface'
 import './ElveForm.scss';
 import Input from '../ui/Input/Input';
 import { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 
 interface FormData {
   name: string;
@@ -38,34 +39,52 @@ const ElveForm: React.FC<ElveFormProps> = ({ elve }) => {
   }, [elve, reset]);
 
   // Handler of Submit data. Two cases update an elve or update one created yet
-  const handleData = (data: FormData) => {
+  const handlerData = (data: FormData) => {
     if (elve) {
       console.log('Updating elve:', elve.id);
     } else {
-      console.log('Adding new elve');
-    }
-    console.log(data);
-  };
+      // Add new Elve
+      const url = `http://127.0.0.1:8000/api/v1/labor-registration`;
 
-  const handleCancelBtn = () => {
-    console.log('Return to elves list page');
+      const formData = new FormData();
+
+      const fileInput = document.querySelector('input[type="file"]');
+      const selectedFile = fileInput.files[0];
+
+      // Add data to formData
+      formData.append('image', selectedFile);
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('age', data.age);
+      formData.append('address', data.address);
+      formData.append('height', data.height);
+
+      fetch(url, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-API-Key': `${import.meta.env.VITE_API_KEY_BACK}`,
+        },
+      })
+        .then((res) => console.log(res))
+        .catch((err) => console.error(err));
+    }
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit(handleData)}>
+    <form className="form" onSubmit={handleSubmit(handlerData)}>
       <Input
         id="name"
         label="Name"
         type="text"
         placeholder="Slinky"
-        //? I need to know what are this two under lines
         error={errors['name']}
         {...register('name')}
       />
       <Input
         id="image"
         label="Image"
-        type="text"
+        type="file"
         placeholder="https://yourimage.com"
         error={errors['image']}
         {...register('image')}
@@ -108,10 +127,9 @@ const ElveForm: React.FC<ElveFormProps> = ({ elve }) => {
           Confirm
         </button>
 
-        {/* Button that return you to elves page without save */}
-        <button className="btn" onClick={handleCancelBtn}>
+        <NavLink className="btn" to="/elves">
           Cancel
-        </button>
+        </NavLink>
       </div>
     </form>
   );
