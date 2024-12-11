@@ -1,0 +1,40 @@
+.input {
+  --clr-error: crimson;
+
+  &__label {
+    font-weight: semibold;
+
+    &--error {
+      color: var(--clr-error);
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    border: 0.125rem solid var(--border-color);
+    border-radius: 0.3125rem;
+    padding: 0.5rem;
+
+    &--error {
+      border-color: var(--clr-error);
+      color: var(--clr-error);
+    }
+  }
+
+  &__icon {
+    color: var(--clr-error);
+    font-size: 1.5rem;
+  }
+
+  &__field {
+    flex-grow: 1;
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__error {
+    color: var(--clr-error);
+  }
+}
