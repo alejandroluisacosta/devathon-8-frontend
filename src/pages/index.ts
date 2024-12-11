@@ -5,3 +5,4 @@ export * from './gps/GpsPage';
 export * from './grades/GradesPage';
 export * from './reader/ReaderPage';
 export * from './reindeers/ReindeersPage';
+export * from './elve-form/ElveFormPage';
