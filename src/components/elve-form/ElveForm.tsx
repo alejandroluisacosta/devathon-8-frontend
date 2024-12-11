@@ -6,7 +6,7 @@ import { Elve as ElveInterface } from '../../interfaces/elvesResponse.interface'
 import './ElveForm.scss';
 import Input from '../ui/Input/Input';
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 interface FormData {
   name: string;
@@ -22,6 +22,8 @@ interface ElveFormProps {
 }
 
 const ElveForm: React.FC<ElveFormProps> = ({ elve }) => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -69,6 +71,8 @@ const ElveForm: React.FC<ElveFormProps> = ({ elve }) => {
         .then((res) => console.log(res))
         .catch((err) => console.error(err));
     }
+
+    navigate('/elves');
   };
 
   return (
