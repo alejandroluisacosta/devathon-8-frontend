@@ -1,7 +1,16 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { HistoryProvider, MapProvider, PlacesProvider } from './context';
 import { ElvesProvider } from './context/elves/ElvesProdiver';
-import { CaloriesPage, ChillPage, ElvesPage, GpsPage, GradesPage, ReaderPage, ReindeersPage } from './pages';
+import {
+  CaloriesPage,
+  ChillPage,
+  ElveFormPage,
+  ElvesPage,
+  GpsPage,
+  GradesPage,
+  ReaderPage,
+  ReindeersPage,
+} from './pages';
 import { DashboardTemplate } from './template/DashboardTemplate';
 
 export const App = () => {
@@ -33,6 +42,7 @@ export const App = () => {
         />
         <Route path="reader" element={<ReaderPage />} />
         <Route path="chill" element={<ChillPage />} />
+        <Route path="elve-form" element={<ElveFormPage />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
