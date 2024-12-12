@@ -1,0 +1,16 @@
+.reader__filter {
+    display: flex;
+    gap: 2%;
+    width: 100%;
+    &__button {
+        background-color: var(--light-green);
+        min-width: 60px;
+        border-radius: 0.4rem;
+        padding: 4px 10px;
+        box-shadow: 3px 4px 0px 0px var(--text-color);
+        &:active {
+            transform: scale(0.95);
+            transition: transform 0.1s;
+        }
+    }
+}
