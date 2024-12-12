@@ -6,7 +6,6 @@ type Props = {
   elvesList: Elve[];
 };
 export const ElveList = ({ elvesList }: Props) => {
-  console.log({ elvesList });
   return (
     <div className="elves">
       {elvesList.map((elve) => (

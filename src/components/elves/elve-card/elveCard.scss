@@ -16,6 +16,7 @@
     outline: 0.1875rem solid var(--border-color);
 
     margin-inline: auto;
+    background-color: var(--bg-color);
   }
   &__container {
     padding: 5rem 1rem 1rem 1rem;
@@ -50,6 +51,9 @@
   &__number {
     font-size: clamp(1.5rem, 3.5vw, 2rem);
     font-weight: 600;
+    &-m {
+      font-size: 14px;
+    }
   }
   &__actions {
     display: flex;

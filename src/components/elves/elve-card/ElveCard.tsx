@@ -23,7 +23,9 @@ export const ElveCarD = ({ elve }: Props) => {
             <span className="elve__data">Age</span>
           </div>
           <div className="elve__content">
-            <span className="elve__number">{elve.height}</span>
+            <span className="elve__number">
+              {elve.height} <span className="elve__number-m">m</span>
+            </span>
             <span className="elve__data">Height</span>
           </div>
         </div>
