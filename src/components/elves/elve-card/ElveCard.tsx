@@ -7,6 +7,23 @@ type Props = {
 };
 
 export const ElveCarD = ({ elve }: Props) => {
+  const handleDelete = () => {
+    const url = `http://127.0.0.1:8000/api/v1/labor-registration/${elve.id}`;
+
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': `${import.meta.env.VITE_API_KEY_BACK}`,
+      },
+    };
+
+    fetch(url, options);
+
+    
+
+  };
+
   return (
     <article className="elve">
       <div className="elve__hero">
@@ -33,7 +50,7 @@ export const ElveCarD = ({ elve }: Props) => {
             <IoCreateOutline className="elve__icon" strokeWidth={20} />
             Edit
           </button>
-          <button className="elve__btn elve__btn--delete">
+          <button className="elve__btn elve__btn--delete" onClick={handleDelete}>
             <IoTrashOutline className="elve__icon" />
             Delete
           </button>
