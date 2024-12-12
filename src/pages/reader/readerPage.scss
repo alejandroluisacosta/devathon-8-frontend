@@ -5,4 +5,14 @@
     flex-direction: column;
     gap: 1.3rem;
   }
+  &__top-section {
+    display: flex;
+    gap: 5%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .reader__top-section {
+      display: block;
+  }
 }

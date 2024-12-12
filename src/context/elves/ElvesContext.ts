@@ -5,8 +5,9 @@ interface ElvesContextProps {
   isLoading: boolean;
   error: string | null;
   elves: Elve[];
+  lastPage: number | null;
 
-  getElves: () => Promise<void>;
+  getElves: (page: number, query: string, order: string) => Promise<void>;
 }
 
 export const ElvesContext = createContext<ElvesContextProps>({} as ElvesContextProps);

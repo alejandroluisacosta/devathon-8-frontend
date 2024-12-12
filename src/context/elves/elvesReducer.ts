@@ -4,7 +4,8 @@ import { ElvesState } from './ElvesProdiver';
 type ElvesAction =
   | { type: 'SET_ELVES'; payload: Elve[] }
   | { type: 'SET_LOADING'; payload: boolean }
-  | { type: 'SET_ERROR'; payload: string };
+  | { type: 'SET_ERROR'; payload: string }
+  | { type: 'SET_LAST_PAGE'; payload: number };
 
 export const elvesReducer = (state: ElvesState, action: ElvesAction): ElvesState => {
   switch (action.type) {
@@ -17,6 +18,11 @@ export const elvesReducer = (state: ElvesState, action: ElvesAction): ElvesState
       return {
         ...state,
         elves: action.payload,
+      };
+    case 'SET_LAST_PAGE':
+      return {
+        ...state,
+        lastPage: action.payload,
       };
 
     default:

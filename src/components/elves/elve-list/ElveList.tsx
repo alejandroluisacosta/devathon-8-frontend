@@ -9,7 +9,6 @@ type Props = {
 };
 
 export const ElveList = ({ elvesList }: Props) => {
-
   return (
     <div className="elves">
       {elvesList.map((elve) => (
