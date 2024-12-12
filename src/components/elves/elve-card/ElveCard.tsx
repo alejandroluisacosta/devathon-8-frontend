@@ -1,12 +1,15 @@
 import { IoCreateOutline, IoTrashOutline } from 'react-icons/io5';
 import { Elve } from '../../../interfaces';
 import './elveCard.scss';
+import { useElves } from '../../../hook';
 
 type Props = {
   elve: Elve;
 };
 
 export const ElveCarD = ({ elve }: Props) => {
+  const { deleteElves } = useElves();
+
   const handleDelete = () => {
     const url = `http://127.0.0.1:8000/api/v1/labor-registration/${elve.id}`;
 
@@ -20,8 +23,7 @@ export const ElveCarD = ({ elve }: Props) => {
 
     fetch(url, options);
 
-    
-
+    deleteElves(elve.id);
   };
 
   return (
