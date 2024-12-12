@@ -4,14 +4,13 @@
     gap: 1rem;
   }
   &__title {
-    font-family: 'Geist', sans-serif;
     text-transform: uppercase;
     font-weight: 900;
-    letter-spacing: 1rem;
-    font-size: 3rem;
+    letter-spacing: clamp(0.5rem, 1.5vw, 1rem);
+    font-size: clamp(1.3rem, 3.2vw, 3rem);
     margin-bottom: 0.5rem;
     color: var(--light-red);
-    -webkit-text-stroke: 3px var(--light-red);
+    -webkit-text-stroke: clamp(0.1075rem, 0.6vw, 0.1875rem) var(--light-red);
   }
   &__subtitle {
     display: inline-block;

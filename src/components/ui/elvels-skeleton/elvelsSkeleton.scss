@@ -1,0 +1,20 @@
+.elves-skeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+  gap: 1.5rem;
+
+  &__card {
+    background-color: var(--bg-color);
+    padding: 13rem 0;
+    animation: skeleton-loading 1s infinite alternate;
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: var(--bg-color);
+  }
+  100% {
+    background-color: #dbdbdb;
+  }
+}

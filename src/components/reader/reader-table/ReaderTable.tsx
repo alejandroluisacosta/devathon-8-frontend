@@ -30,7 +30,7 @@ export const ReaderTable = ({ initalLetters }: Props) => {
             <th className="table__head-th">Subject</th>
             <th className="table__head-th table__head-th--hiden">Date</th>
             <th className="table__head-th">Status</th>
-            <th className="table__head-th"></th>
+            <th className="table__head-th">Action</th>
           </tr>
         </thead>
         <tbody className="table__body">

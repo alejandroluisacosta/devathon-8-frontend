@@ -3,6 +3,8 @@
   border-radius: 1rem;
   text-align: center;
   border: 0.0625rem solid var(--border-color);
+  font-size: clamp(0.6rem, 1vw, 0.8rem);
+  text-wrap: nowrap;
 }
 
 .read {

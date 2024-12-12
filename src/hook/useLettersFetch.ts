@@ -8,7 +8,9 @@ interface LetterState {
   lastPage: number;
 }
 
+
 export const useLettersFetch = (page: string, query: string = '', status: string = '') => {
+
   const [lettersState, setLettersState] = useState<LetterState>({
     letters: [],
     loading: false,
@@ -40,6 +42,7 @@ export const useLettersFetch = (page: string, query: string = '', status: string
         );
         console.log(status, query);
 
+
         if (!response.ok) throw new Error('Network response was not ok');
 
         const data = (await response.json()) as LettersResponse;
@@ -58,6 +61,7 @@ export const useLettersFetch = (page: string, query: string = '', status: string
 
     getLetters();
   }, [page, query, status]);
+
 
   return { ...lettersState };
 };

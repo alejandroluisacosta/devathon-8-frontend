@@ -20,6 +20,8 @@
       padding: 0.75rem;
       text-align: left;
       font-weight: 400;
+      font-size: clamp(0.8rem, 1vw, 1rem);
+
       &--hiden {
         @media screen and (max-width: 850px) {
           display: none;
@@ -37,8 +39,13 @@
     &-td {
       padding: 0.75rem;
       vertical-align: middle;
-      max-width: 10rem;
+      max-width: 15rem;
       text-wrap: balance;
+      font-size: clamp(0.8rem, 1vw, 1rem);
+      @media screen and (max-width: 450px) {
+        padding: 0.5rem;
+      }
+
       &--hiden {
         @media screen and (max-width: 850px) {
           display: none;
@@ -54,8 +61,11 @@
       aspect-ratio: 1/1;
       background-color: var(--bg-color);
       border-radius: 0.3rem;
-      //   outline: 0.0625rem solid var(--border-color);
+      outline: 0.0625rem solid var(--border-color);
       box-shadow: var(--box-shadow);
+      @media screen and (max-width: 450px) {
+        display: none;
+      }
     }
     &-btn {
       cursor: pointer;

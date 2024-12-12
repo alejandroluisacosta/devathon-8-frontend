@@ -1,18 +1,21 @@
-# Devathon VIII frontend
+# Devathon VIII
 
 ## About the project
 
-Frontend codebase for Devathon 8th Edition project.
+We are developing a dashboard for Santa Claus with multiple tools for help him in his work like:
 
-Landing page with multiple sections as a gps map with a input search to check the next visit of Santa Claus and a registry of the last searchs.
+- A gps to see directions or prepare routes before visit the kids
+- A letter inbox where Santa can read the letters of the people and when finish mark as read
+- A managment tool to control his elves workes.
 
 ## Table of contents
 
-- [Devathon VIII frontend](#devathon-viii-frontend)
+- [Devathon VIII](#devathon-viii)
   - [About the project](#about-the-project)
   - [Table of contents](#table-of-contents)
   - [First steps](#first-steps)
   - [Technologies](#technologies)
+  - [Other tools](#other-tools)
   - [Developers](#developers)
 
 ## First steps
@@ -38,18 +41,32 @@ cd devathon-8-frontend
 npm install
 ```
 
-4. Local deploy of the project
+4. Copy the file .env.example and rename the copy as .env
+
+5. Get a api token from [mapbox](https://docs.mapbox.com/help/getting-started/access-tokens/)
+
+6. Set the variable VITE_MAP_BOX_TOKEN in the file .env as the token you get previously
+
+7. Start the backend server and configure as documentation indicate
+
+8. Set the variable VITE_API_KEY_BACK in the file .env as the same you set in the backend repository
+
+9. Local deploy of the project
 
 ```bash
 npm run dev
 ```
 
-5. Insert in the browser http://localhost:5173/
+10. Insert in the browser http://localhost:5173/
 
 ## Technologies
 
 - Typescript
 - React
+
+## Other tools
+
+- [Mapbox](https://www.mapbox.com/)
 
 ## Developers
 
