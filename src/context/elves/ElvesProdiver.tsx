@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useReducer } from 'react';
 import { elvesApiFetch } from '../../api';
 import { Elve, ElvelsResponse } from '../../interfaces';
 import { ElvesContext } from './ElvesContext';
@@ -11,27 +11,29 @@ export interface ElvesState {
   isLoading: boolean;
   error: string | null;
   elves: Elve[];
+  lastPage: number | null;
 }
 
 const INITIAL_STATE: ElvesState = {
   isLoading: false,
   error: null,
   elves: [],
+  lastPage: null,
 };
 export const ElvesProvider = ({ children }: Props) => {
   const [state, dispatch] = useReducer(elvesReducer, INITIAL_STATE);
 
-  const getElves = async () => {
+  const getElves = async (page: number = 1, query: string, order: string) => {
     try {
+      const [orderKey, orderDirection] = order.split('-');
       dispatch({ type: 'SET_LOADING', payload: true });
-
-      //TODO: set the correct Interface for the response
       const elves = await elvesApiFetch<null, ElvelsResponse>({
-        path: '/labor-registration/list',
+        path: `/labor-registration/list?page=${page}${query && `&search=${query}`}${order && `&order=${orderKey}&direction=${orderDirection}`}`,
         method: 'GET',
       });
 
       dispatch({ type: 'SET_ELVES', payload: elves.data });
+      dispatch({ type: 'SET_LAST_PAGE', payload: elves.last_page });
     } catch (error) {
       if (error instanceof Error) {
         dispatch({ type: 'SET_ERROR', payload: error.message });
@@ -40,12 +42,5 @@ export const ElvesProvider = ({ children }: Props) => {
       dispatch({ type: 'SET_LOADING', payload: false });
     }
   };
-
-  useEffect(() => {
-    //TODO: fetch data to get elves list
-    getElves();
-
-    // dispatch({ type: 'SET_ELVES', payload: elvesList });
-  }, []);
   return <ElvesContext.Provider value={{ ...state, getElves }}>{children}</ElvesContext.Provider>;
 };
