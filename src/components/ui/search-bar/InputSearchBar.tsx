@@ -7,7 +7,7 @@ type Props = React.ComponentProps<'input'> & {
 export const InputSearchBar = ({ label, ...props }: Props) => {
   return (
     <div className="search-bar">
-      <label htmlFor={props.id} className="search__label">
+      <label htmlFor={props.id} className="search-bar__label">
         {label}
       </label>
       <input type="search" className="search-bar__input" {...props} />

@@ -9,12 +9,25 @@ type Props = {
 };
 export const ReaderTable = ({ initalLetters }: Props) => {
   const [letters, setLetters] = useState<LetterR[]>(initalLetters);
-  const markAsRead = (id: number) => {
-    //TODO: First implement markAsRead in backend and then update the state for de Virtual DOM
-    const lettersUpdated = letters.map((letter) =>
-      letter.id === id ? { ...letter, attributes: { ...letter.attributes, read: true } } : letter,
-    );
-    setLetters(lettersUpdated);
+  const markAsRead = async (id: number) => {
+    try {
+      const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
+      const response = await fetch(`${BASE_URL}/letter/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': `${import.meta.env.VITE_API_KEY_BACK}`,
+        },
+      });
+      if (!response.ok) throw new Error('Error with the network');
+      const lettersUpdated = letters.map((letter) =>
+        letter.id === id ? { ...letter, attributes: { ...letter.attributes, read: true } } : letter,
+      );
+      setLetters(lettersUpdated);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

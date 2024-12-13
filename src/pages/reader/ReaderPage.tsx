@@ -1,55 +1,71 @@
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { LettersSkeleton, Pagination } from '../../components';
+import { useSearchParams } from 'react-router-dom';
+import { InputSearchBar, LettersSkeleton, Pagination } from '../../components';
 import { ReaderTable } from '../../components/reader/reader-table/ReaderTable';
-import { useLettersFetch } from '../../hook';
-import { parseQuery } from '../../utils';
+import { useDeounce, useLettersFetch } from '../../hook';
 import './readerPage.scss';
-import { SearchBar } from '../../components/reader/SearchBar/SearchBar';
 
+import React, { useState } from 'react';
 import { FilterLetters } from '../../components/reader/FilterLetters/FilterLetters';
 
-
 export const ReaderPage = () => {
-  const location = useLocation();
-  const parsed = parseQuery(location.search);
-  const [page, setPage] = useState(+parsed.page || 1);
-  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { debounceRef } = useDeounce();
+  const [searchInput, setSearchInput] = useState(searchParams.get('search') || '');
 
-  const [status, setStatus] = useState('');
+  const search = searchParams.get('search') || '';
+  const page = parseInt(searchParams.get('page') || '1');
+  const status = searchParams.get('status') || '';
 
-  
-  const { loading, letters, error, lastPage } = useLettersFetch(page.toString(), query, status);
+  const { loading, letters, error, lastPage } = useLettersFetch(
+    page.toString(),
+    searchParams.get('search') || '',
+    status,
+  );
 
-  
-  const handleSearchSubmit = (newQuery: string) => {
-    setQuery(newQuery.toLowerCase());
+  const handleSearchSubmit = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newSearchTerm = event.target.value;
+    setSearchInput(newSearchTerm);
+    const params: { [key: string]: string } = { search: newSearchTerm };
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+    }
+
+    debounceRef.current = setTimeout(() => {
+      if (page) params.page = page.toString();
+      if (status) params.status = status;
+      setSearchParams(params);
+    }, 500);
   };
 
-
   const handleFilterLetters = (newStatus: string) => {
-    setStatus(newStatus);
-  }
+    const params: { [key: string]: string } = { status: newStatus };
 
+    if (search) params.search = search;
+    if (page) params.page = page.toString();
+    setSearchParams(params);
+  };
+
+  const handlePageChange = (newPage: number) => {
+    const params: { [key: string]: string } = { page: newPage.toString() };
+    setSearchParams(params);
+  };
 
   return (
     <section className="reader">
       <div className="reader__content">
-        <div className='reader__top-section'>
-          <SearchBar onSubmit={handleSearchSubmit}/>
-          <FilterLetters onClick={handleFilterLetters} />
+        <div className="reader__top-section">
+          <InputSearchBar
+            label="Search reader"
+            id="search-reader"
+            placeholder="Search a reader by name..."
+            name="search-reader"
+            value={searchInput}
+            onChange={handleSearchSubmit}
+          />
+          <FilterLetters status={status} onClick={handleFilterLetters} />
         </div>
-        {loading ? (
-          <LettersSkeleton rows={20} />
-        ) : (
-          <>
-            <SearchBar onSubmit={handleSearchSubmit}/>
-
-            <ReaderTable initalLetters={letters} />
-
-            <Pagination page={page} lastPage={lastPage} setPage={setPage} />
-          </>
-        )}
+        {loading ? <LettersSkeleton rows={20} /> : <ReaderTable initalLetters={letters} />}
+        <Pagination page={page} lastPage={lastPage} setPage={handlePageChange} />
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import { IoCreateOutline, IoTrashOutline } from 'react-icons/io5';
+import { NavLink } from 'react-router-dom';
 import { Elve } from '../../../interfaces';
 import './elveCard.scss';
 import { useElves } from '../../../hook';
@@ -50,10 +51,10 @@ export const ElveCarD = ({ elve }: Props) => {
         </div>
 
         <div className="elve__actions">
-          <button className="elve__btn elve__btn--edit">
+          <NavLink to={`/elve-form/${elve.id}`} className="elve__btn elve__btn--edit">
             <IoCreateOutline className="elve__icon" strokeWidth={20} />
             Edit
-          </button>
+          </NavLink>
           <button className="elve__btn elve__btn--delete" onClick={handleDelete}>
             <IoTrashOutline className="elve__icon" />
             Delete
