@@ -1,38 +1,49 @@
 .reader {
-    &__search {
-        display: flex;
-        gap: 20px;
+  &__search {
+    display: flex;
+    gap: 20px;
 
-        align-items: center;
+    align-items: center;
 
-        &__input {
-            border: 1px solid black;
-            border-radius: 0.4rem;
-            box-shadow: 3px 4px 0px 0px var(--text-color);
-            padding: 4px 10px;
-
-
-            &:focus {
-                outline: none;
-            }
-        }
-        &__submit {
-            background-color: var(--light-green);
-            padding: 5px 20px;
-            border-radius: 0.4rem;
-            box-shadow: 3px 4px 0px 0px var(--text-color);
-            &:active {
-                transform: scale(0.95);
-                transition: transform 0.1s;
-            }
-        }
+    @media only screen and (max-width: 767px) {
+      flex-wrap: wrap;
     }
 
+    &__input {
+      border: 1px solid black;
+      border-radius: 0.4rem;
+      box-shadow: 3px 4px 0px 0px var(--text-color);
+      padding: 4px 10px;
+
+      @media only screen and (max-width: 384px) {
+        width: 100%;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+    &__submit {
+      background-color: var(--light-green);
+      padding: 5px 20px;
+      border-radius: 0.4rem;
+      box-shadow: 3px 4px 0px 0px var(--text-color);
+
+      @media only screen and (max-width: 384px) {
+        width: 100%;
+      }
+
+      &:active {
+        transform: scale(0.95);
+        transition: transform 0.1s;
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 767px) {
-    .reader__search {
-        margin-bottom: 30px;
-    }
-
+  .reader__search {
+    margin-bottom: 30px;
+  }
 }
+
