@@ -29,7 +29,7 @@ export const ElvesPage = () => {
       setSearchTerm(newSearchTerm);
       const searchParam = newSearchTerm ? `&search=${newSearchTerm}` : '';
       navigate(`?page=${page}${searchParam}`);
-    }, 500);
+    }, 300);
   };
 
   const onOrderChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -52,7 +52,12 @@ export const ElvesPage = () => {
 
   return (
     <section className="elves-page">
-      <ElveFilters onOrderChange={onOrderChange} onSearchChange={onSearchChange} order={order} />
+      <ElveFilters
+        searchTerm={searchTerm}
+        onOrderChange={onOrderChange}
+        onSearchChange={onSearchChange}
+        order={order}
+      />
       <div className="elves-page__content">
         {isLoading ? <ElvesSkeleton /> : <ElveList elvesList={elves} />}
 
