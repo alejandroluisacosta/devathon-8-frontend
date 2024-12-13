@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 type Props = {
   elvesList: Elve[];
 };
+
 export const ElveList = ({ elvesList }: Props) => {
   return (
     <div className="elves">

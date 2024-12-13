@@ -42,5 +42,10 @@ export const ElvesProvider = ({ children }: Props) => {
       dispatch({ type: 'SET_LOADING', payload: false });
     }
   };
-  return <ElvesContext.Provider value={{ ...state, getElves }}>{children}</ElvesContext.Provider>;
+
+  const deleteElves = (id: number) => {
+    dispatch({type: 'DELETE_ELVE', payload: id})
+  }
+
+  return <ElvesContext.Provider value={{ ...state, getElves, deleteElves }}>{children}</ElvesContext.Provider>;
 };
