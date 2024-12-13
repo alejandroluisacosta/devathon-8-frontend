@@ -3,15 +3,17 @@ import { IoChevronDownOutline } from 'react-icons/io5';
 import { InputSearchBar } from '../../ui/search-bar/InputSearchBar';
 
 type Props = {
+  searchTerm: string;
   onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onOrderChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   order: string;
 };
 
-export const ElveFilters = ({ onOrderChange, onSearchChange, order }: Props) => {
+export const ElveFilters = ({ searchTerm, onOrderChange, onSearchChange, order }: Props) => {
   return (
     <div className="elves-page__filters">
       <InputSearchBar
+        defaultValue={searchTerm}
         label="Search elve"
         placeholder="Search elve by name..."
         id="search-bar-elve"
