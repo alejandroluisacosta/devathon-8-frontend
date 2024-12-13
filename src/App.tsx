@@ -42,7 +42,14 @@ export const App = () => {
         />
         <Route path="reader" element={<ReaderPage />} />
         <Route path="chill" element={<ChillPage />} />
-        <Route path="elve-form" element={<ElveFormPage />} />
+        <Route
+          path="elve-form/:id?"
+          element={
+            <ElvesProvider>
+              <ElveFormPage />
+            </ElvesProvider>
+          }
+        />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>

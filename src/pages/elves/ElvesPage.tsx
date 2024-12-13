@@ -27,8 +27,9 @@ export const ElvesPage = () => {
 
     debounceRef.current = setTimeout(() => {
       setSearchTerm(newSearchTerm);
+      setPage(1);
       const searchParam = newSearchTerm ? `&search=${newSearchTerm}` : '';
-      navigate(`?page=${page}${searchParam}`);
+      navigate(`?page=${1}${searchParam}`);
     }, 500);
   };
 
