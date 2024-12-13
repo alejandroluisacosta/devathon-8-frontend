@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { LettersSkeleton, Pagination } from '../../components';
 import { ReaderTable } from '../../components/reader/reader-table/ReaderTable';
 import { useLettersFetch } from '../../hook';
@@ -10,21 +10,24 @@ import { SearchBar } from '../../components/reader/SearchBar/SearchBar';
 import { FilterLetters } from '../../components/reader/FilterLetters/FilterLetters';
 
 export const ReaderPage = () => {
-  const location = useLocation();
-  const parsed = parseQuery(location.search);
-  const [page, setPage] = useState(+parsed.page || 1);
-  const [query, setQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [status, setStatus] = useState('');
+  const search = searchParams.get('search') || '';
+  const page = parseInt(searchParams.get('page') || '1');
+  const status = searchParams.get('status') || '';
 
-  const { loading, letters, error, lastPage } = useLettersFetch(page.toString(), query, status);
+  const { loading, letters, error, lastPage } = useLettersFetch(page.toString(), search, status);
 
   const handleSearchSubmit = (newQuery: string) => {
-    setQuery(newQuery.toLowerCase());
+    setSearchParams({ search: newQuery, page: page, status: status });
   };
 
   const handleFilterLetters = (newStatus: string) => {
-    setStatus(newStatus);
+    setSearchParams({ search: search, page: page, status: newStatus });
+  };
+
+  const handlePageChange = (newPage: number) => {
+    setSearchParams({ search: search, page: newPage, status: status });
   };
 
   return (
@@ -40,7 +43,7 @@ export const ReaderPage = () => {
           <>
             <ReaderTable initalLetters={letters} />
 
-            <Pagination page={page} lastPage={lastPage} setPage={setPage} />
+            <Pagination page={page} lastPage={lastPage} setPage={handlePageChange} />
           </>
         )}
       </div>
